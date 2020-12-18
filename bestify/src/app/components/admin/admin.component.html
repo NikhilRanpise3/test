@@ -1,0 +1,122 @@
+<div class="main-dash">
+  <br /><br />
+  <div
+    class="cards"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWarp
+    fxLayoutGap="0.5%"
+    fxLayoutAlign="center"
+  >
+    <div class="card1">
+      <mat-card>
+        <mat-card-header>chart 1</mat-card-header>
+        <mat-card-title>chart 1</mat-card-title>
+        <mat-card-content>
+          <google-chart
+            [title]="pietitle"
+            [type]="pie"
+            [data]="piedata"
+            [options]="pieoptions"
+            [columns]="piecolumns"
+          ></google-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    &nbsp;&nbsp;
+    <div class="card1">
+      <mat-card>
+        <mat-card-header>chart 1</mat-card-header>
+        <mat-card-title>chart 1</mat-card-title>
+        <mat-card-content>
+          <google-chart
+            [title]="bartitle"
+            [type]="bar"
+            [data]="bardata"
+            [options]="baroptions"
+            [columns]="barcolumns"
+          ></google-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <br /><br />
+  </div>
+  <br /><br />
+  <div
+    class="cards"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWarp
+    fxLayoutGap="0.5%"
+    fxLayoutAlign="center"
+  >
+    <div class="card1">
+      <mat-card>
+        <mat-card-header>chart 1</mat-card-header>
+        <mat-card-title>chart 1</mat-card-title>
+        <mat-card-content>
+          <google-chart
+            [title]="columntitle"
+            [type]="column"
+            [data]="columndata"
+            [options]="columnoptions"
+            [columns]="columncolumns"
+          ></google-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    &nbsp;&nbsp;
+    <div class="card1">
+      <mat-card>
+        <mat-card-header>chart 1</mat-card-header>
+        <mat-card-title>chart 1</mat-card-title>
+        <mat-card-content>
+          <google-chart [type]="combo" [data]="combodata"></google-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <br /><br />
+
+  <br /><br />
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. Mia"
+      #input
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
