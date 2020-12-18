@@ -5,19 +5,13 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
   
-    <!-- Position Column -->
-    <ng-container matColumnDef="quizid">
-      <th mat-header-cell *matHeaderCellDef><b>Quiz ID </b>  </th>
-      <td mat-cell *matCellDef="let element"> {{element.quizid}} </td>
+    <!-- quizname Column -->
+    <ng-container matColumnDef="quizname">
+      <th mat-header-cell *matHeaderCellDef><b>Quiz Name </b>  </th>
+      <td mat-cell *matCellDef="let element"> {{element.quizname}} </td>
     </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="userid">
-      <th mat-header-cell *matHeaderCellDef> <b>User ID </b> </th>
-      <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
+    
+    <!-- quizname Column -->
     <ng-container matColumnDef="score">
       <th mat-header-cell *matHeaderCellDef> <b>Score </b> </th>
       <td mat-cell *matCellDef="let element"> {{element.score}} </td>

@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { HighscoreComponent } from './components/highscore/highscore.component';
 import { PlanetComponent } from './components/game/planet/planet.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'userprofile', component: UserSidenavComponent },
@@ -18,12 +19,17 @@ const routes: Routes = [
   { path: 'car', component: CarComponent },
   { path: 'rps', component: RockpapersissorsComponent },
   { path: 'planet', component: PlanetComponent },
-  { path: 'userprofile/userQuiz', component: UserquizComponent },
-  { path: 'userprofile/userGame', component: UsergameComponent },
-  { path: 'userprofile/userFavourite', component: UserFavouriteComponent,
-  canActivate: [AuthGuardService]},
+  
+  // { path: 'userprofile/userQuiz', component: UserquizComponent },
+  // { path: 'userprofile/userGame', component: UsergameComponent },
+  // { path: 'userprofile/userFavourite', component: UserFavouriteComponent,
+  // canActivate: [AuthGuardService]},
 
  { path: 'hs', component: HighscoreComponent },
+ {path:'userQuiz',component:UserquizComponent},
+{path:'userGame',component:UsergameComponent},
+{path:'userFavourite',component:UserFavouriteComponent},
+// {path: '', component: AppComponent }
 ];
 
 @NgModule({

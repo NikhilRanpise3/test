@@ -1,8 +1,8 @@
 module.exports = app => {
     const quizes = require("../controllers/quiz.controller.js");
-  
+    const cors = require("cors");
     var router = require("express").Router();
-  
+    router.use(cors());
     const bodyParser = require("body-parser");
   
   router.use(bodyParser.json());

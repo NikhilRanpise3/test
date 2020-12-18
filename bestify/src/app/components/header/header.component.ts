@@ -95,6 +95,8 @@ export class HeaderComponent implements OnInit {
   goToProfile() {
     console.log('hello');
     this.userprofileclicked.emit(true);
+    this.router.navigate(['/userFavourite']);
+
     // this.router.navigate(['/userprofile']);
   }
 }

@@ -1,11 +1,11 @@
-
-table{
-    
-    display: inline-block;
-    margin: 0 auto;
-    width: 80%;
-    background-color: lightblue;
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
 }
-.mat-sort-header-container {
-    align-items: center;
-  }
+
+th.mat-header-cell {
+    text-align: left;
+    max-width: 30em;
+}

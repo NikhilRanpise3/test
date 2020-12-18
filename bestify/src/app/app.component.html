@@ -18,13 +18,13 @@
   </div>
   <br /><br /><br /><br /> -->
 
-                                    <app-home
-                                      *ngIf="!isprofileclicked"
-                                      [ngClass]="{ 'admin-class': adminpage }"
-                                    ></app-home>
-                                    <app-admin [ngClass]="{ 'admin-class': !adminpage }"></app-admin>
-                                    <app-user-sidenav *ngIf="isprofileclicked"></app-user-sidenav>
-                                    
+  <app-home
+    *ngIf="!isprofileclicked"
+    [ngClass]="{ 'admin-class': adminpage }"
+  ></app-home>
+  <app-admin [ngClass]="{ 'admin-class': !adminpage }"></app-admin>
+  <app-user-sidenav *ngIf="isprofileclicked"></app-user-sidenav>
+  <!-- <router-outlet></router-outlet> -->
   <app-highscore></app-highscore>
   <!-- <div id="target">
     <app-admin></app-admin>

@@ -56,7 +56,7 @@ export class LogindialogComponent implements OnInit {
           if (data.user.isadmin) {
             sessionStorage.setItem('admin', data);
             sessionStorage.setItem('token', data.token);
-            sessionStorage.setItem('username', data.user.username);
+            sessionStorage.setItem('userid', data.user.id);
             this.adminLoggedIn = true;
             this.dialogRef.close({
               event: 'close',
@@ -65,7 +65,7 @@ export class LogindialogComponent implements OnInit {
           } else {
             sessionStorage.setItem('user', data);
             sessionStorage.setItem('token', data.token);
-            sessionStorage.setItem('username', data.user.username);
+            sessionStorage.setItem('userid', data.user.id);
            
 
             this.loggedIn = true;
