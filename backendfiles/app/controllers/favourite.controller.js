@@ -1,38 +1,37 @@
 const db = require("../models");
-const QuizScore = db.quizscore;
+const Favourite = db.favourite;
 const Op = db.Sequelize.Op;
 
 const { QueryTypes } = require('sequelize');
 exports.findAll = (req, res) => {
-    QuizScore.findAll()
+    Favourite.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving favourites."
             });
         });
 };
 
 exports.create = (req, res) => {
 
-    const quizscore = {
+    const favourite = {
         quizid: req.body.quizid,
         userid: req.body.userid,
-        score: req.body.score
-    };
+        };
 
-    // Save Tutorial in the database
-    QuizScore.create(quizscore)
+    // Save Favourite in the database
+    Favourite.create(favourite)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Tutorial."
+                    err.message || "Some error occurred while creating the Favourite."
             });
         });
 
@@ -42,7 +41,7 @@ exports.findOne = async (req, res) => {
     const quizid = req.query.quizid;
     const userid = req.query.userid;
     
-    QuizScore.findAll({ where: {
+    Favourite.findAll({ where: {
          quizid:quizid ,
          userid:userid
         //  $and :{userid:userid}
@@ -52,7 +51,7 @@ exports.findOne = async (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Tutorial with id=" + quizid
+                message: "Error retrieving Favourite with id=" + quizid
             });
         });
 
@@ -63,23 +62,23 @@ exports.findOne = async (req, res) => {
 exports.delete = (req, res) => {
     const quizid = req.params.id;
 
-    QuizScore.destroy({
+    Favourite.destroy({
         where: { quizid:quizid }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Tutorial was deleted successfully!"
+                    message: "Favourite was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+                    message: `Cannot delete Favourite with id=${id}. Maybe Favourite was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Tutorial with id=" + id
+                message: "Could not delete Favourite with id=" + id
             });
         });
 };
@@ -87,67 +86,66 @@ exports.delete = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    QuizScore.update(req.body, {
+    Favourite.update(req.body, {
         where: { id: id }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Tutorial was updated successfully."
+                    message: "Favourite was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+                    message: `Cannot update Favourite with id=${id}. Maybe Favourite was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Tutorial with id=" + id
+                message: "Error updating Favourite with id=" + id
             });
         });
 };
 
 exports.deleteAll = (req, res) => {
-    QuizScore.destroy({
+    Favourite.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Tutorials were deleted successfully!` });
+            res.send({ message: `${nums} Favourites were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while removing all tutorials."
+                    err.message || "Some error occurred while removing all favourites."
             });
         });
 };
 
 
-exports.getQuizScore = (req,res)=>{
+exports.getFavourite = (req,res)=>{
 
-    //show quizscore using user id
-    db.sequelize.query("select (select quizname from quizzes where id=(select quizid from quizscores where userid = ?))as quizname, score from quizscores where userid=?",
+    //show favourite using user id
+    db.sequelize.query("select * from favourites where userid = ? ",
     {
-        replacements:[req.params.id,req.params.id], 
-        type: db.sequelize.QueryTypes.SELECT})
-        .then(data=>{
-            res.send(data);
-            console.log(data);
-        });
-}
-
-exports.getQuizName = (req,res)=>{
-
-    //show quizname using user id
-    db.sequelize.query("select quizname from quizzes where id=(select quizid from quizscores where userid = ?",
-    {
-
         replacements:[req.params.id], 
         type: db.sequelize.QueryTypes.SELECT})
         .then(data=>{
             res.send(data);
             console.log(data);
         });
+// }
+
+// exports.getFavQuiz = (req,res)=>{
+
+//     //show quizname using user id
+//     db.sequelize.query("select quizid from favourites where userid= ?",
+//     {
+//         replacements:[req.params.id], 
+//         type: db.sequelize.QueryTypes.SELECT})
+//         .then(data=>{
+//             res.send(data);
+//             console.log(data);
+//         });
 }

@@ -12,8 +12,9 @@ module.exports = app => {
     router.post("/", quizescore.create);
   
    // Retrieve all Tutorials
-    router.get("/", quizescore.findAll);
-  
+    // router.get("/", quizescore.findAll);
+
+    router.get("/:id", quizescore.getQuizScore);
     // Retrieve a single Tutorial with id
     router.get("/aaaa", quizescore.findOne);
   

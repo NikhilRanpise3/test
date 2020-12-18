@@ -25,4 +25,5 @@ db.quizscore = require("./quizscore.model.js")(sequelize, Sequelize);
 db.questions = require("./questions.model.js")(sequelize, Sequelize);
 db.games = require("./game.model.js")(sequelize, Sequelize);
 db.gameScore = require("./gameScore.model.js")(sequelize, Sequelize);
+db.favourite = require("./favourite.model.js")(sequelize, Sequelize);
 module.exports = db;
